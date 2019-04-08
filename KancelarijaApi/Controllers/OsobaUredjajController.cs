@@ -11,9 +11,11 @@ using KancelarijaApi.Dto.OsobaDto;
 using KancelarijaApi.Dto.OsobaUredjajDto;
 using KancelarijaApi.Models;
 using KancelarijaApi.Interfaces;
+using Microsoft.AspNetCore.Routing;
 
 namespace KancelarijaApi.Controllers
 {
+    [Route("api/[controller]")]
     public class OsobaUredjajController : ControllerBase
     {
         private readonly IMapper _mapper;

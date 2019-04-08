@@ -42,7 +42,11 @@ namespace KancelarijaApi
             services.AddScoped<IKancelarija, KancelarijaRepository>();
             services.AddScoped<IOsoba, OsobaRepository>();
             services.AddScoped<IUredjaj, UredjajRepository>();
+<<<<<<< HEAD
            // services.AddScoped<IOsobaUredjaj, OsobaUredjajRepository>();
+=======
+            services.AddScoped<IOsobaUredjaj, OsobaUredjajRepository>();
+>>>>>>> 4df764ca067c34fc1b7063a3787d3a16e6b3798b
 
             //add UnitOfWork
             services.AddScoped<IUnitOfWork,UnitOfWork>();

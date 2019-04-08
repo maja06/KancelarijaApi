@@ -19,10 +19,32 @@ namespace KancelarijaApi.Repositories
             unitOfWork = _unitOfWork;
         }
 
+<<<<<<< HEAD
         //public IQueryable<OsobaUredjaj> IzlistavanjePoUredjaju(long id)
         //{
         //    return _context.OsobeUredjaji.Where(x => x.UredjajId == id).Include(o => o.Osoba).Include(u => u.Uredjaj);
         //}
 
+=======
+        public void Add(IOsobaUredjaj entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(IOsobaUredjaj entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<IOsobaUredjaj> IRepository<IOsobaUredjaj, long>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        IOsobaUredjaj IRepository<IOsobaUredjaj, long>.GetById(long id)
+        {
+            throw new NotImplementedException();
+        }
+>>>>>>> 4df764ca067c34fc1b7063a3787d3a16e6b3798b
     }
 }
