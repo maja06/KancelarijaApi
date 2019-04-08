@@ -8,6 +8,6 @@ namespace KancelarijaApi.Dto.UredjajDto
     public class UredjajPostDto
     {
         public string UredjajIme { get; set; }
-        //public long OsobaId { get; set; }
+        public long? OsobaId { get; set; }
     }
 }

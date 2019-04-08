@@ -18,7 +18,8 @@ namespace KancelarijaApi.Profiles
             CreateMap<KancelarijaPutDto, Kancelarija>();
             CreateMap<Kancelarija, ListaOsobaDto>()
                 .ForMember(x => x.OsobeUKancelariji, y => y.MapFrom(z => z.ListaOsobe));
-                       
+            CreateMap<Kancelarija, IzlistavanjePoKancelarijiDto>();
+
         }
     }
 }

@@ -28,7 +28,7 @@ namespace KancelarijaApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<KancelarijApiContext>(options => options.UseSqlServer(Configuration["ConnectionString:KancelarijaApiDB"]));
+            services.AddDbContext<KancelarijApiContext>(options => options.UseSqlServer(Configuration["ConnectionString:KancelarijaAPI"]));
             services.AddAutoMapper(); 
             services.AddSwaggerGen(c =>
             {
@@ -40,9 +40,9 @@ namespace KancelarijaApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
             services.AddScoped<IKancelarija, KancelarijaRepository>();
-            //services.AddScoped<IPersonRepository, PersonRepository>();
-            //services.AddScoped<IDeviceRepository, DeviceRepository>();
-            //services.AddScoped<IUsageRepository, UsageRepository>();
+            services.AddScoped<IOsoba, OsobaRepository>();
+            services.AddScoped<IUredjaj, UredjajRepository>();
+           // services.AddScoped<IOsobaUredjaj, OsobaUredjajRepository>();
 
             //add UnitOfWork
             services.AddScoped<IUnitOfWork,UnitOfWork>();

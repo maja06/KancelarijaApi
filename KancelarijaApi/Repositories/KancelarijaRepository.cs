@@ -1,10 +1,9 @@
 ﻿using KancelarijaApi.Interfaces;
 using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace KancelarijaApi.Repositories
@@ -19,14 +18,16 @@ namespace KancelarijaApi.Repositories
             unitOfWork = _unitOfWork;
         }
 
-        public Kancelarija GetByName(string name)
+      
+        public IQueryable<Kancelarija> GetKancelarijaPoImenu(string ime)
         {
-            var found = _context.Kancelarije.Where(a => a.Opis == name).FirstOrDefault();
-            if (found == null)
+            var kancelarija = _context.Kancelarije.Where(o => o.Opis == ime).Include(n => n.ListaOsobe);
+            if (!kancelarija.Any())
             {
-                throw new Exception();
+               throw new Exception();
             }
-            return found;
+
+            return kancelarija;
 
         }
     }

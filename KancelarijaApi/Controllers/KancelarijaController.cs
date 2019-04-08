@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,12 +26,12 @@ namespace KancelarijaApi.Controllers
 
         }
 
-        [HttpGet("Name.")]
-        public IActionResult GetByName(string name)
+        [HttpGet("Po Imenu")]
+        public IActionResult GetKancelarijaPoImenu(string ime)
         {
-            var kancelarijaIme = _repository.GetByName(name);
-           // if (kancelariaIme == null) return BadRequest();
-            var map = _mapper.Map<KancelarijaGetDto>(kancelarijaIme);
+            var kancelarijaIme = _repository.GetKancelarijaPoImenu(ime);
+         
+            var map = _mapper.Map<IEnumerable<IzlistavanjePoKancelarijiDto>>(kancelarijaIme);
            
             return Ok(map);
         }

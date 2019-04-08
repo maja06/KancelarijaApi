@@ -7,6 +7,7 @@ namespace KancelarijaApi.Interfaces
 {
     public interface IKancelarija : IRepository<Kancelarija, long>
     {
-        Kancelarija GetByName(string name);
+       // Kancelarija GetByName(string name);
+        IQueryable<Kancelarija> GetKancelarijaPoImenu(string ime);
     }
 }

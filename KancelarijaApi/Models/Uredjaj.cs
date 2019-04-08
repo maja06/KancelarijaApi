@@ -9,6 +9,8 @@ namespace KancelarijaApi.Models
 {
     public class Uredjaj
     {
+        internal readonly string Opis;
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long UredjajId { get; set; }

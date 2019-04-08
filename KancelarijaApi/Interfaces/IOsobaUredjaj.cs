@@ -2,34 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KancelarijaApi.Models;
 
 namespace KancelarijaApi.Interfaces
 {
-    public class IOsobaUredjaj : IRepository<IOsobaUredjaj, long>
+    public interface IOsobaUredjaj : IRepository<OsobaUredjaj, long>
     {
-        public void Add(IOsobaUredjaj entity)
-        {
-            throw new NotImplementedException();
-        }
+       // IQueryable<OsobaUredjaj> IzlistavanjePoUredjaju(long id);
 
-        public IEnumerable<IOsobaUredjaj> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IOsobaUredjaj GetById(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(IOsobaUredjaj entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

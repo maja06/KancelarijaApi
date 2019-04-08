@@ -17,27 +17,22 @@ namespace KancelarijaApi.Controllers
         private readonly IUredjaj _repository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+       // private readonly IOsobaUredjaj _koriscenje;
 
 
 
-        public UredjajController(IUredjaj repository, IMapper mapper, IUnitOfWork unitOfWork) : base(repository, mapper, unitOfWork)
+        public UredjajController(IUredjaj repository, IMapper mapper, IUnitOfWork unitOfWork /*IOsobaUredjaj koriscenje*/) : base(repository, mapper, unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = repository;
+           // _koriscenje = koriscenje;
         }
-
-        //    //[HttpGet]
-        //    //public override IActionResult Get()
-        //    //{
-        //    //    var uredjaji = _context.Uredjaji.ProjectTo<UredjajGetDto>(_mapper.ConfigurationProvider);     
-
-        //    //    if (null == uredjaji) return NoContent();
-        //    //    return Ok(uredjaji);
-        //    //}
-
-
 
     }
 
+
+
 }
+
+

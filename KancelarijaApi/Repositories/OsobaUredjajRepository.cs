@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace KancelarijaApi.Repositories
 {
@@ -17,6 +18,11 @@ namespace KancelarijaApi.Repositories
             context = _context;
             unitOfWork = _unitOfWork;
         }
+
+        //public IQueryable<OsobaUredjaj> IzlistavanjePoUredjaju(long id)
+        //{
+        //    return _context.OsobeUredjaji.Where(x => x.UredjajId == id).Include(o => o.Osoba).Include(u => u.Uredjaj);
+        //}
 
     }
 }

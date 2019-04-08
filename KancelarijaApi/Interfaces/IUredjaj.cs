@@ -8,5 +8,6 @@ namespace KancelarijaApi.Interfaces
 {
     public interface IUredjaj : IRepository<Uredjaj, long>
     {
+        
     }
 }

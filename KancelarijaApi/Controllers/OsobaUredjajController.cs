@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,16 +18,38 @@ namespace KancelarijaApi.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IOsobaUredjaj _repository;
-        private readonly IUnitOfWork _unitOfWork;
+       // private readonly IUnitOfWork _unitOfWork;
 
 
-        public OsobaUredjajController(IMapper mapper, IOsobaUredjaj repository, IUnitOfWork unitOfWork) 
+        public OsobaUredjajController(IMapper mapper, IOsobaUredjaj koriscenje/*, IUnitOfWork unitOfWork*/) 
         {
-            _unitOfWork = unitOfWork;
+           //_unitOfWork = unitOfWork;
             _mapper = mapper;
-            _repository = repository;
+            _repository = koriscenje;
 
         }
+
+        //[HttpGet("GetAll")]
+        //public IActionResult GetAll()
+        //{
+        //    var koriscenje = _repository.GetAll();
+
+        //    var map = _mapper.Map<IEnumerable<IstorijaDto>>(koriscenje);
+
+        //    return Ok(map);
+        //}
+
+       
+
+        //[HttpGet("Izlistavanje po Id-u Uredjaja")]
+        //public IActionResult IzlistavanjePoUredjaju(long id)
+        //{
+        //    var uredjajKoriscenje = _repository.IzlistavanjePoUredjaju(id);
+
+        //    var map = _mapper.Map<VrijemeDto>(uredjajKoriscenje);
+
+        //    return Ok(map);
+        //}
 
         //[HttpPost("Novo koriscenje.")]
         //public IActionResult PostKoriscenje(NovoKoriscenjeDto input)
