@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KancelarijaApi.Repositories
 {
-    public class UredjajRepository : Repository<UredjajRepository, long>, IUredjaj
+    public class UredjajRepository : Repository<Uredjaj, long>, IUredjaj
     {
         private readonly KancelarijApiContext _context;
         private readonly IUnitOfWork _unitOfWork;

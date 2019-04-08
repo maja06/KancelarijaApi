@@ -40,9 +40,9 @@ namespace KancelarijaApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
             services.AddScoped<IKancelarija, KancelarijaRepository>();
-            //services.AddScoped<IPersonRepository, PersonRepository>();
-            //services.AddScoped<IDeviceRepository, DeviceRepository>();
-            //services.AddScoped<IUsageRepository, UsageRepository>();
+            services.AddScoped<IOsoba, OsobaRepository>();
+            services.AddScoped<IUredjaj, UredjajRepository>();
+            services.AddScoped<IOsobaUredjaj, OsobaUredjajRepository>();
 
             //add UnitOfWork
             services.AddScoped<IUnitOfWork,UnitOfWork>();

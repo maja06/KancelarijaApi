@@ -18,5 +18,24 @@ namespace KancelarijaApi.Repositories
             unitOfWork = _unitOfWork;
         }
 
+        public void Add(IOsobaUredjaj entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(IOsobaUredjaj entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<IOsobaUredjaj> IRepository<IOsobaUredjaj, long>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        IOsobaUredjaj IRepository<IOsobaUredjaj, long>.GetById(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
