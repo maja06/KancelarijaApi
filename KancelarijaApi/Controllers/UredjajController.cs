@@ -17,23 +17,19 @@ namespace KancelarijaApi.Controllers
         private readonly IUredjaj _repository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-<<<<<<< HEAD
-       // private readonly IOsobaUredjaj _koriscenje;
+        private readonly IOsobaUredjaj _koriscenje;
 
 
 
-        public UredjajController(IUredjaj repository, IMapper mapper, IUnitOfWork unitOfWork /*IOsobaUredjaj koriscenje*/) : base(repository, mapper, unitOfWork)
-=======
-               
-        public UredjajController(IUredjaj repository, IMapper mapper, IUnitOfWork unitOfWork) : base(repository, mapper, unitOfWork)
->>>>>>> 4df764ca067c34fc1b7063a3787d3a16e6b3798b
+        public UredjajController(IUredjaj repository, IMapper mapper, IUnitOfWork unitOfWork ,IOsobaUredjaj koriscenje) : base(repository, mapper, unitOfWork)
+                  
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = repository;
-           // _koriscenje = koriscenje;
+            _koriscenje = koriscenje;
         }
-<<<<<<< HEAD
+
 
     }
 
@@ -41,8 +37,8 @@ namespace KancelarijaApi.Controllers
 
 }
 
-=======
+
                
-    }
->>>>>>> 4df764ca067c34fc1b7063a3787d3a16e6b3798b
+    
+
 

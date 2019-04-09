@@ -20,14 +20,23 @@ namespace KancelarijaApi.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IOsobaUredjaj _repository;
-       // private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
 
-        public OsobaUredjajController(IMapper mapper, IOsobaUredjaj koriscenje/*, IUnitOfWork unitOfWork*/) 
+        public OsobaUredjajController(IMapper mapper, IOsobaUredjaj koriscenje, IUnitOfWork unitOfWork) 
         {
-           //_unitOfWork = unitOfWork;
+           _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = koriscenje;
+
+        }
+
+        [HttpPost("Novo koriscenje.")]
+        public IActionResult PostKoriscenje(NovoKoriscenjeDto input)
+        {
+            var map = _mapper.Map<OsobaUredjaj>(input);
+            _repository.AddKoriscenje(map);
+            return Ok();
 
         }
 
@@ -41,7 +50,7 @@ namespace KancelarijaApi.Controllers
         //    return Ok(map);
         //}
 
-       
+
 
         //[HttpGet("Izlistavanje po Id-u Uredjaja")]
         //public IActionResult IzlistavanjePoUredjaju(long id)
@@ -85,16 +94,16 @@ namespace KancelarijaApi.Controllers
         //        }
 
         //        return BadRequest();
-                                                                                 
+
         //    }
-                
+
         //}
 
         //[HttpGet("Izlistati sve")]
         //public IActionResult GetSve()
         //{
         //    var osobauredjaj = _context.OsobeUredjaji.Include(x => x.Osoba);
-           
+
         //    var lista = _mapper.ProjectTo<IstorijaDto>(osobauredjaj);
 
         //    if (lista.Any())

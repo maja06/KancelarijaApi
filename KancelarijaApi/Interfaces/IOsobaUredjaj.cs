@@ -6,15 +6,12 @@ using KancelarijaApi.Models;
 
 namespace KancelarijaApi.Interfaces
 {
-<<<<<<< HEAD
+
     public interface IOsobaUredjaj : IRepository<OsobaUredjaj, long>
     {
        // IQueryable<OsobaUredjaj> IzlistavanjePoUredjaju(long id);
+        void AddKoriscenje(OsobaUredjaj input);
 
-=======
-    public interface IOsobaUredjaj : IRepository<IOsobaUredjaj, long>
-    {
-       
->>>>>>> 4df764ca067c34fc1b7063a3787d3a16e6b3798b
+
     }
 }
