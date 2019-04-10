@@ -50,20 +50,7 @@ namespace KancelarijaApi.Controllers
             return Ok(map);
         }
 
-       
-
-        //[HttpDelete("Obrisati kancelariju ali ne i osobu")]
-        //public IActionResult DeleteKancelariju(long id)
-        //{
-        //    var kancelarija = _repository.Get(id);
-
-        //    if(kancelarija == null) return NotFound("Kancelarija sa datim Id-em ne postoji")
-
-        //    if(!kancelarija.Osoba.Any()) 
-        //}
-
-
-
+ 
         //[HttpDelete]
         //public override IActionResult Delete(long id)
         //{
