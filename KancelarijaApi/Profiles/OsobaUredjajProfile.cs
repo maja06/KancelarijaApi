@@ -12,10 +12,10 @@ namespace KancelarijaApi.Profiles
     {
         public OsobaUredjajProfile()
         {
-            CreateMap<OsobaUredjaj, IstorijaDto>()
-                .ForMember(a => a.OsobaIme, b => b.MapFrom(c => c.Osoba.Ime))
-                .ForMember(a => a.OsobaPrezime, b => b.MapFrom(c => c.Osoba.Prezime))
-                .ForMember(a => a.UredjajIme, b => b.MapFrom(c => c.Uredjaj.UredjajIme));
+            //CreateMap<OsobaUredjaj, IstorijaDto>()
+            //    .ForMember(a => a.OsobaIme, b => b.MapFrom(c => c.Osoba.Ime))
+            //    .ForMember(a => a.OsobaPrezime, b => b.MapFrom(c => c.Osoba.Prezime))
+            //    .ForMember(a => a.UredjajIme, b => b.MapFrom(c => c.Uredjaj.UredjajIme));
 
             CreateMap<NovoKoriscenjeDto, OsobaUredjaj>();
 
