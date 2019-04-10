@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace KancelarijaApi.Repositories
 {
@@ -14,9 +15,27 @@ namespace KancelarijaApi.Repositories
         private readonly IUnitOfWork _unitOfWork;
         public OsobaRepository(KancelarijApiContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
         {
-            context = _context;
-            unitOfWork = _unitOfWork;
+            _context = context ;
+            _unitOfWork = unitOfWork;
         }
+
+        public Osoba ListaKoriscenjaPoOsobi(long id)
+        {
+            var data = _context.Osobe.Include(x => x.ListaKoriscenje).FirstOrDefault(z => z.OsobaId == id);
+
+            return data;
+        }
+
+        public Osoba IzlistajSve(long id)
+        {
+            var data = _context.Osobe.Include(x => x.Kancelarija).Include( x => x.ListaKoriscenje).Include(z => z.ListaUredjaji).FirstOrDefault( g => g.OsobaId == id);
+
+            return data;
+        }
+   
+      
+        
+
 
 
     }

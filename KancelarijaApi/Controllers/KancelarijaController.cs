@@ -26,32 +26,44 @@ namespace KancelarijaApi.Controllers
 
         }
 
-        [HttpGet("Po Imenu")]
-        public IActionResult GetKancelarijaPoImenu(string ime)
+        [HttpGet("Osobe u kancelariji")]
+        public IActionResult GetLista(long id)
         {
-            var kancelarijaIme = _repository.GetKancelarijaPoImenu(ime);
-         
-            var map = _mapper.Map<IEnumerable<IzlistavanjePoKancelarijiDto>>(kancelarijaIme);
-           
+            var data = _repository.ListaOsobaKancelarija(id);
+
+            var map = _mapper.Map<ListaOsobaDto>(data);
+
             return Ok(map);
         }
 
-        //[HttpGet("Liste osoba po kancelarijama.")]
-        //public IActionResult GetOsobeUKancelarijama()
+        [HttpGet("Osobe kancelariji")]
+        public IActionResult GetKncelarija(string opis)
+        {
+            var kancelarija = _repository.KancelarijaPoOpisu(opis);
+
+            if (opis == null) return NotFound("Nema kancelarije sa trazenim opisom");
+
+            if (!kancelarija.ListaOsobe.Any()) return Ok("Kancelarija nema osobu");
+
+            var map = _mapper.Map<ListaOsobaDto>(kancelarija);
+        
+            return Ok(map);
+        }
+
+
+        //[HttpDelete("Obrisati kancelariju ali ne i osobu")]
+        //public IActionResult DeleteKancelariju(long id)
         //{
-        //    return base.Ok(_context.Kancelarije.ProjectTo<ListaOsobaDto>(_mapper.ConfigurationProvider));
+        //    var kancelarija = _repository.Get(id);
 
-        //    //var osobeUKancelarijama = _context.Kancelarije
-        //    //    .Include(x => x.ListaOsobe)
-        //    //    .Select(a => new { Ime = a.Opis, ListaOsoba = a.ListaOsobe });
-        //    //return Ok(osobeUKancelarijama.ToList());
-
-        //    //var osobe = _context.Osobe.Include(k => k.Kancelarija).ThenInclude(l => l.ListaOsobe)
-        //    //    .Select(a => new { a.Kancelarija.Opis, a.Kancelarija.ListaOsobe});
-        //    //return Ok(osobe);
+        //    if(kancelarija == null) return NotFound("Kancelarija sa datim Id-em ne postoji")
+            
+        //    if(!kancelarija.Osoba.Any()) 
         //}
+   
 
-        //[HttpDelete]
+      
+  //[HttpDelete]
         //public override IActionResult Delete(long id)
         //{
         //    using(var transaction = _context.Database.BeginTransaction())
@@ -66,6 +78,7 @@ namespace KancelarijaApi.Controllers
         //        //if (kancelarija.ListaOsobe != null) return BadRequest($"You cannot delete office with {id} because there are still people in that office.");
 
         //        _context.Remove(kancelarija);
+      
         //        _context.SaveChanges();
         //        transaction.Commit();
 

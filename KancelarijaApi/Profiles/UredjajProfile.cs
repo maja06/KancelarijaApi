@@ -15,8 +15,9 @@ namespace KancelarijaApi.Profiles
             CreateMap<Uredjaj, UredjajGetDto>();
             CreateMap<UredjajPostDto, Uredjaj>();
             CreateMap<UredjajPutDto, Uredjaj>();
-                
-                
+            CreateMap<Uredjaj, KoriscenjeUredjajaDto>();
+
+
         }
     }
 }

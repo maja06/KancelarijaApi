@@ -15,8 +15,17 @@ namespace KancelarijaApi.Repositories
         private readonly IUnitOfWork _unitOfWork;
         public UredjajRepository(KancelarijApiContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
         {
-            context = _context;
-            unitOfWork = _unitOfWork;
+            _context = context;
+            _unitOfWork = unitOfWork;
+        }
+
+        public Uredjaj KoriscenjeUredjaja(long id)
+        {
+            var data = _context.Uredjaji.Include(x => x.ListaKoriscenje).Include(z => z.Osoba).FirstOrDefault(y => y.UredjajId == id);
+
+            return data;
+
+
         }
 
         public void AddKoriscenje(OsobaUredjaj input)
@@ -44,8 +53,6 @@ namespace KancelarijaApi.Repositories
             }
 
         }
-
-
 
 
     }

@@ -3,6 +3,7 @@ using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -14,21 +15,27 @@ namespace KancelarijaApi.Repositories
         private readonly IUnitOfWork _unitOfWork;
         public KancelarijaRepository(KancelarijApiContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
         {
-            context = _context;
-            unitOfWork = _unitOfWork;
+            _context = context;
+            _unitOfWork = unitOfWork;
         }
 
-      
-        public IQueryable<Kancelarija> GetKancelarijaPoImenu(string ime)
+        public Kancelarija ListaOsobaKancelarija(long id)
         {
-            var kancelarija = _context.Kancelarije.Where(o => o.Opis == ime).Include(n => n.ListaOsobe);
-            if (!kancelarija.Any())
-            {
-               throw new Exception();
-            }
+            var data = _context.Kancelarije.Include(x => x.ListaOsobe).FirstOrDefault(x => x.KancelarijaId == id);
 
-            return kancelarija;
-
+            return data;
         }
+
+        public Kancelarija KancelarijaPoOpisu(string opis)
+        {
+            var data = _context.Kancelarije.Include(x => x.ListaOsobe).FirstOrDefault(y => y.Opis == opis);
+
+            return data;
+        }
+        
+
+
+
     }
 }
+

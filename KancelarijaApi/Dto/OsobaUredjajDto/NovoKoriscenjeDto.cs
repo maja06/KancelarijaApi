@@ -9,8 +9,6 @@ namespace KancelarijaApi.Dto.OsobaUredjajDto
     {
         public long OsobaId { get; set; }
         public long UredjajId { get; set; }
-        //public DateTime VrijemeOd { get; set; }
-        //public DateTime? VrijemeDo { get; set; }
-    
+       
     }
 }

@@ -9,7 +9,7 @@ namespace KancelarijaApi.Interfaces
 
     public interface IOsobaUredjaj : IRepository<OsobaUredjaj, long>
     {
-       // IQueryable<OsobaUredjaj> IzlistavanjePoUredjaju(long id);
+        
         void AddKoriscenje(OsobaUredjaj input);
 
 
