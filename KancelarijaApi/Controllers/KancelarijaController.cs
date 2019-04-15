@@ -44,20 +44,8 @@ namespace KancelarijaApi.Controllers
             return Ok(map);
         }
 
-
-        //[HttpDelete("Obrisati kancelariju ali ne i osobu")]
-        //public IActionResult DeleteKancelariju(long id)
-        //{
-        //    var kancelarija = _repository.Get(id);
-
-        //    if(kancelarija == null) return NotFound("Kancelarija sa datim Id-em ne postoji")
-            
-        //    if(!kancelarija.Osoba.Any()) 
-        //}
-   
-
-      
-  //[HttpDelete]
+ 
+        //[HttpDelete]
         //public override IActionResult Delete(long id)
         //{
         //    using(var transaction = _context.Database.BeginTransaction())
@@ -72,7 +60,7 @@ namespace KancelarijaApi.Controllers
         //        //if (kancelarija.ListaOsobe != null) return BadRequest($"You cannot delete office with {id} because there are still people in that office.");
 
         //        _context.Remove(kancelarija);
-      
+
         //        _context.SaveChanges();
         //        transaction.Commit();
 

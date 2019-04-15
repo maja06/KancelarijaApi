@@ -12,8 +12,6 @@ namespace KancelarijaApi.Profiles
     {
         public OsobaUredjajProfile()
         {
-            CreateMap<VrijemeDto, OsobaUredjaj>();
-            CreateMap<ListaKoriscenjaDto, OsobaUredjaj>();
             CreateMap<NovoKoriscenjeDto, OsobaUredjaj>();
 
         }

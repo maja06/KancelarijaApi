@@ -29,7 +29,17 @@ namespace KancelarijaApi.Repositories
 
             return data;
         }
-        
+
+        public override void Remove(long id)
+        {
+            var kancelarija = _context.Kancelarije.Find(id);
+            if (kancelarija == null) throw new Exception("Not found.");
+            if (kancelarija.ListaOsobe.Any()) throw new Exception();
+
+            _context.Remove(kancelarija);
+            _unitOfWork.Save();
+        }
+
 
 
 
