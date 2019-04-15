@@ -6,13 +6,13 @@ using System.Collections.Generic;
 namespace KancelarijaApi.Controllers
 {
     [Route("api/[controller]")]
-    public class BaseController<TEntity, TGetDto, TPostDto, TPutDto, IdType> : ControllerBase where TEntity : class where TGetDto : class where TPostDto : class where TPutDto : class
+    public abstract class BaseController<TEntity, TGetDto, TPostDto, TPutDto, TIdType> : ControllerBase where TEntity : class where TGetDto : class where TPostDto : class where TPutDto : class
     {
-        private readonly IRepository<TEntity, IdType> _repository;
+        private readonly IRepository<TEntity, TIdType> _repository;
         private readonly IMapper _mapper;
         private readonly  IUnitOfWork _unitOfWork;
 
-        public BaseController(IRepository<TEntity, IdType> repository, IMapper mapper, IUnitOfWork unitOfWork)
+        public BaseController(IRepository<TEntity, TIdType> repository, IMapper mapper, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
@@ -21,7 +21,7 @@ namespace KancelarijaApi.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        public IActionResult Get()
+        public virtual IActionResult Get()
         {
             var data = _repository.GetAll();
 
@@ -37,7 +37,7 @@ namespace KancelarijaApi.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public IActionResult Get(IdType id)
+        public virtual IActionResult Get(TIdType id)
         {
             var data = _repository.GetById(id);
 
@@ -53,7 +53,7 @@ namespace KancelarijaApi.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public IActionResult Post([FromBody]TPostDto input)
+        public virtual IActionResult Post([FromBody]TPostDto input)
         {
             var otp = _mapper.Map<TEntity>(input);
             _repository.Add(otp);
@@ -63,7 +63,7 @@ namespace KancelarijaApi.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public IActionResult Put(IdType id, TPutDto input)
+        public virtual IActionResult Put(TIdType id, TPutDto input)
         {
             var entity = _repository.GetById(id);
             _mapper.Map(input, entity);
@@ -74,7 +74,7 @@ namespace KancelarijaApi.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(IdType id)
+        public virtual IActionResult Delete(TIdType id)
         {
             _repository.Remove(id);
             _unitOfWork.Save();

@@ -1,15 +1,12 @@
 ﻿using KancelarijaApi.Interfaces;
 using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace KancelarijaApi.Repositories
 {
-    public class OsobaRepository : Repository<Osoba, long>, IOsoba
+    public class OsobaRepository : Repository<Osoba, long>, IOsobaRepository
     {
         private readonly KancelarijApiContext _context;
         private readonly IUnitOfWork _unitOfWork;

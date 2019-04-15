@@ -2,21 +2,18 @@
 using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 
 namespace KancelarijaApi.Repositories
 {
-    public class KancelarijaRepository : Repository<Kancelarija, long>, IKancelarija
+    public class KancelarijaRepository : Repository<Kancelarija, long>, IKancelarijaRepository
     {
-        private readonly KancelarijApiContext _context;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly KancelarijApiContext _context; v services.AddDependency();
+
         public KancelarijaRepository(KancelarijApiContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
         {
             _context = context;
-            _unitOfWork = unitOfWork;
         }
 
         public Kancelarija ListaOsobaKancelarija(long id)

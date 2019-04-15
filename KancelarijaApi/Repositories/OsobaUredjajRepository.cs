@@ -2,14 +2,11 @@
 using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace KancelarijaApi.Repositories
 {
-    public class OsobaUredjajRepository : Repository<OsobaUredjaj, long>, IOsobaUredjaj
+    public class OsobaUredjajRepository : Repository<OsobaUredjaj, long>, IOsobaUredjajRepository
     {
         private readonly KancelarijApiContext _context;
         private readonly IUnitOfWork _unitOfWork;

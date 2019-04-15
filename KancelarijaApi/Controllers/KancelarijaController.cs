@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using KancelarijaApi.Dto.KancelarijaDto;
-using KancelarijaApi.Models;
 using KancelarijaApi.Interfaces;
 
 namespace KancelarijaApi.Controllers
@@ -14,13 +10,11 @@ namespace KancelarijaApi.Controllers
     public class KancelarijaController : BaseController<Kancelarija, KancelarijaGetDto, KancelarijaPostDto, KancelarijaPutDto, long>
     {
         private readonly IMapper _mapper;
-        private readonly IKancelarija _repository;
-        private readonly IUnitOfWork _unitOfWork;
-        
+        private readonly IKancelarijaRepository _repository;
 
-        public KancelarijaController(IMapper mapper, IKancelarija repository, IUnitOfWork unitOfWork) : base(repository, mapper, unitOfWork)
+
+        public KancelarijaController(IMapper mapper, IKancelarijaRepository repository, IUnitOfWork unitOfWork) : base(repository, mapper, unitOfWork)
         {
-            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = repository;
 

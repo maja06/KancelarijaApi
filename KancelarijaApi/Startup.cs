@@ -29,28 +29,30 @@ namespace KancelarijaApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<KancelarijApiContext>(options => options.UseSqlServer(Configuration["ConnectionString:KancelarijaAPI"]));
-            services.AddAutoMapper(); 
+            services.AddAutoMapper();
+          
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                Path.Combine(AppContext.BaseDirectory, xmlFile);
                 //   c.IncludeXmlComments(xmlPath);
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
-            services.AddScoped<IKancelarija, KancelarijaRepository>();
-            services.AddScoped<IOsoba, OsobaRepository>();
-            services.AddScoped<IUredjaj, UredjajRepository>();
-
-            services.AddScoped<IOsobaUredjaj, OsobaUredjajRepository>();
-
-            services.AddScoped<IOsobaUredjaj, OsobaUredjajRepository>();
+            services.AddScoped<IKancelarijaRepository, KancelarijaRepository>();
+            services.AddScoped<IOsobaRepository, OsobaRepository>();
+            services.AddScoped<IUredjajRepository, UredjajRepository>();
+            services.AddScoped<IOsobaUredjajRepository, OsobaUredjajRepository>();
 
 
             //add UnitOfWork
             services.AddScoped<IUnitOfWork,UnitOfWork>();
-           // services.AddFiltersService();
+
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

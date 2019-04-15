@@ -1,14 +1,12 @@
 ﻿using KancelarijaApi.Interfaces;
 using KancelarijaApi.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace KancelarijaApi.Repository
 {
-    public class Repository<TEntity, IdType> : IRepository<TEntity, IdType> where TEntity : class
+    public class Repository<TEntity, TIdType> : IRepository<TEntity, TIdType> where TEntity : class
     {
         private readonly KancelarijApiContext _context;
         private readonly IUnitOfWork _unitOfWork;
@@ -30,13 +28,13 @@ namespace KancelarijaApi.Repository
             return entities;
         }
 
-        public virtual TEntity GetById(IdType id)
+        public virtual TEntity GetById(TIdType id)
         {
             var entity = _context.Set<TEntity>().Find(id);
-            //if (entity == null)
-            //{
-            //    throw new Exception("Not found.");
-            //}
+            if (entity == null)
+            {
+               throw new Exception("Not found.");
+            }
 
             return entity;
         }
@@ -54,7 +52,7 @@ namespace KancelarijaApi.Repository
             _unitOfWork.Save();
         }
 
-        public virtual void Remove(IdType id)
+        public virtual void Remove(TIdType id)
         {
             var found = _context.Set<TEntity>().Find(id);
             if (found == null)

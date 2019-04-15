@@ -1,17 +1,8 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using KancelarijaApi.Dto.OsobaDto;
 using KancelarijaApi.Dto.OsobaUredjajDto;
 using KancelarijaApi.Models;
 using KancelarijaApi.Interfaces;
-using Microsoft.AspNetCore.Routing;
 
 namespace KancelarijaApi.Controllers
 {
@@ -19,20 +10,19 @@ namespace KancelarijaApi.Controllers
     public class OsobaUredjajController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IOsobaUredjaj _repository;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IOsobaUredjajRepository _repository;
+        
 
 
-        public OsobaUredjajController(IMapper mapper, IOsobaUredjaj repository, IUnitOfWork unitOfWork) 
+        public OsobaUredjajController(IMapper mapper, IOsobaUredjajRepository repository) 
         {
-           _unitOfWork = unitOfWork;
+           
             _mapper = mapper;
             _repository = repository;
 
         }
 
-        
-      
+       
         [HttpPost("Dodaj koriscenje")]
         public IActionResult PostKoriscenje(NovoKoriscenjeDto input)
         {
