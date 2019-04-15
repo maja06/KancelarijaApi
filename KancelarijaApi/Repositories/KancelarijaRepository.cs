@@ -1,4 +1,5 @@
-﻿using KancelarijaApi.Interfaces;
+﻿using System;
+using KancelarijaApi.Interfaces;
 using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,8 @@ namespace KancelarijaApi.Repositories
 {
     public class KancelarijaRepository : Repository<Kancelarija, long>, IKancelarijaRepository
     {
-        private readonly KancelarijApiContext _context; v services.AddDependency();
+        private readonly KancelarijApiContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
         public KancelarijaRepository(KancelarijApiContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
         {
