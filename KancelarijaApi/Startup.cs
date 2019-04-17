@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using AutoMapper;
+using KancelarijaApi.Attributes;
 using KancelarijaApi.Interfaces;
 using KancelarijaApi.Models;
 using KancelarijaApi.Repositories;
@@ -12,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using RrepTest.MyAttributes;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace KancelarijaApi
@@ -29,12 +32,11 @@ namespace KancelarijaApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<KancelarijApiContext>(options => options.UseSqlServer(Configuration["ConnectionString:KancelarijaAPI"]));
-            services.AddAutoMapper();
-          
+           
 
             services.AddDbContext<KancelarijApiContext>(options => options.UseSqlServer(Configuration["ConnectionString:KancelarijaApiDB"]));
-            services.AddAutoMapper(); 
+            services.AddAutoMapper();
+            services.AddFiltersService();
 
             services.AddSwaggerGen(c =>
             {
@@ -43,14 +45,16 @@ namespace KancelarijaApi
                 Path.Combine(AppContext.BaseDirectory, xmlFile);
                 //   c.IncludeXmlComments(xmlPath);
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddDI();
 
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
             services.AddScoped<IKancelarijaRepository, KancelarijaRepository>();
             services.AddScoped<IOsobaRepository, OsobaRepository>();
             services.AddScoped<IUredjajRepository, UredjajRepository>();
             services.AddScoped<IOsobaUredjajRepository, OsobaUredjajRepository>();
+
+           
 
 
             //add UnitOfWork
