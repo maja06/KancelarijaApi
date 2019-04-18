@@ -14,11 +14,11 @@ namespace RrepTest.MyAttributes
         public static void AddDI(this IServiceCollection services)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            var types = assembly.GetTypes().Where(x => x.GetCustomAttributes<UniversalDIAttribute>().Any());
+            var types = assembly.GetTypes().Where(x => x.GetCustomAttributes<UniversalDiAttribute>().Any());
 
             foreach (var type in types)
             {
-                var getEnumVal = type.GetCustomAttribute<UniversalDIAttribute>().Name;
+                var getEnumVal = type.GetCustomAttribute<UniversalDiAttribute>().Name;
                 Type t = type;
                 Type[] getAllInterfaces = type.GetInterfaces();
                 foreach (var it in getAllInterfaces)

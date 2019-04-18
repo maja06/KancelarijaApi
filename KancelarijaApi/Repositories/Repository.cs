@@ -3,13 +3,16 @@ using KancelarijaApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using KancelarijaApi.Attributes;
 
 namespace KancelarijaApi.Repository
 {
+     [UniversalDi]
     public class Repository<TEntity, TIdType> : IRepository<TEntity, TIdType> where TEntity : class
     {
         private readonly KancelarijApiContext _context;
         private readonly IUnitOfWork _unitOfWork;
+  
         
         public Repository(KancelarijApiContext context, IUnitOfWork unitOfWork)
         {

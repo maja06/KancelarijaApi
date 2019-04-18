@@ -2,10 +2,12 @@
 using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
 using System.Linq;
+using KancelarijaApi.Attributes;
 using Microsoft.EntityFrameworkCore;
 
 namespace KancelarijaApi.Repositories
 {
+    [UniversalDi]
     public class OsobaRepository : Repository<Osoba, long>, IOsobaRepository
     {
         private readonly KancelarijApiContext _context;

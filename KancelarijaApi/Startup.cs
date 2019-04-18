@@ -48,11 +48,11 @@ namespace KancelarijaApi
 
             services.AddDI();
 
-            services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
-            services.AddScoped<IKancelarijaRepository, KancelarijaRepository>();
-            services.AddScoped<IOsobaRepository, OsobaRepository>();
-            services.AddScoped<IUredjajRepository, UredjajRepository>();
-            services.AddScoped<IOsobaUredjajRepository, OsobaUredjajRepository>();
+            //services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
+            //services.AddScoped<IKancelarijaRepository, KancelarijaRepository>();
+            //services.AddScoped<IOsobaRepository, OsobaRepository>();
+            //services.AddScoped<IUredjajRepository, UredjajRepository>();
+            //services.AddScoped<IOsobaUredjajRepository, OsobaUredjajRepository>();
 
            
 

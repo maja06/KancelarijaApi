@@ -4,10 +4,12 @@ using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using KancelarijaApi.Attributes;
 
 
 namespace KancelarijaApi.Repositories
 {
+    [UniversalDi]
     public class KancelarijaRepository : Repository<Kancelarija, long>, IKancelarijaRepository
     {
         private readonly KancelarijApiContext _context;

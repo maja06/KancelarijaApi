@@ -3,9 +3,11 @@ using KancelarijaApi.Models;
 using KancelarijaApi.Repository;
 using System;
 using System.Linq;
+using KancelarijaApi.Attributes;
 
 namespace KancelarijaApi.Repositories
 {
+    [UniversalDi]
     public class OsobaUredjajRepository : Repository<OsobaUredjaj, long>, IOsobaUredjajRepository
     {
         private readonly KancelarijApiContext _context;
