@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace KancelarijaApi.Expressions
@@ -62,10 +63,6 @@ namespace KancelarijaApi.Expressions
 
         }
 
-        private bool DoesPropertyExist(string currentProperty, Type currentType)
-        {
-            throw new NotImplementedException();
-        }
 
         public Expression<Func<TEntity, bool>> GetWhere<TEntity>(Expression binary, ParameterExpression parameterEx)
         {
@@ -103,6 +100,49 @@ namespace KancelarijaApi.Expressions
                     throw new InvalidOperationException();
             }
         }
+
+        public Expression<Func<TEntity, object>> GetOrderByExpression<TEntity>(string propertyName)
+        {
+            ParameterExpression parameterEx = Expression.Parameter(typeof(TEntity), "x");
+
+            Expression currentParameter = parameterEx;
+
+            var currentType = parameterEx.Type;
+
+            string[] allProperties = propertyName.Split(".");
+            foreach (string currentProperty in allProperties)
+            {
+                if (!DoesPropertyExist(currentProperty, currentType))
+                {
+                    throw new Exception($"Property {propertyName} ne postoji u tipu {currentType.Name}");
+                }
+
+                currentParameter = Expression.Property(currentParameter, currentProperty);
+                currentType = currentParameter.Type;
+            }
+
+            var convertEx = Expression.Convert(currentParameter, typeof(object));
+
+            return Expression.Lambda<Func<TEntity, object>>(convertEx, parameterEx);
+        }
+
+        private bool DoesPropertyExist(string currentProperty, Type currentType)
+        {
+            PropertyInfo[] allPropertiesInfo = currentType.GetProperties();
+            foreach (var curP in allPropertiesInfo)
+            {
+                if (curP.Name == currentProperty)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        
+
+
 
 
 
